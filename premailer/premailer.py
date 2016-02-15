@@ -585,6 +585,8 @@ class Premailer(object):
                 for rule in item.cssRules:
                     if isinstance(rule, cssutils.css.csscomment.CSSComment):
                         continue
+                    if isinstance(rule, cssutils.css.cssunknownrule.CSSUnknownRule):
+                        continue
                     for key in rule.style.keys():
                         rule.style[key] = (
                             rule.style.getPropertyValue(key, False),
